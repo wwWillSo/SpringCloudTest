@@ -1,0 +1,4 @@
+com\szw\springcloud\interfac\SchedualServiceHi.class
+com\szw\springcloud\controller\HiController.class
+com\szw\springcloud\interfac\SchedualServiceHiHystric.class
+com\szw\springcloud\ServiceFeignApplication.class

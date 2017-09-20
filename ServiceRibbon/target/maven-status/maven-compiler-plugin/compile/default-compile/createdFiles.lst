@@ -1,0 +1,3 @@
+com\szw\springcloud\ServiceRibbonApplication.class
+com\szw\springcloud\service\HelloService.class
+com\szw\springcloud\controller\HelloController.class
