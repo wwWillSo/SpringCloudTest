@@ -1,6 +1,7 @@
 package com.szw.springcloud.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -8,11 +9,24 @@ import org.springframework.web.client.RestTemplate;
 public class MarketdataService {
 	
 	@Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+	
+	@Value("${eureka.client.name}")
+	private String eurekaClientName ;
+	
+	private final static String prefix = "http://" ;
+	
+	public String getEurekaClientUrl() {
+		String url = prefix + eurekaClientName ;
+		
+		return url ;
+	}
 
 	public String retrieveMarketdata(String key) {
 		
-		 return restTemplate.getForObject("http://eureka-client/api/public/retrieveMarketdata?key="+key,String.class);
+		String url = getEurekaClientUrl() + "/api/public/retrieveMarketdata" ;
+		
+		return restTemplate.getForObject(url + "?key="+key,String.class);
 	}
 
 	

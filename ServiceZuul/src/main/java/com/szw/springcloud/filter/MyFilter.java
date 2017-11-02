@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
-@Component
+//@Component
 public class MyFilter extends ZuulFilter{
 
     private static org.slf4j.Logger log = LoggerFactory.getLogger(MyFilter.class) ;

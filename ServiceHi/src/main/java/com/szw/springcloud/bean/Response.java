@@ -8,6 +8,8 @@ public class Response {
 	private String code;
 	private String desc;
 	private String ip ;
+	private String port ;
+
 	private Object data;
 	
 	public Response() {
@@ -21,6 +23,13 @@ public class Response {
 		ip = addr.getHostAddress();//获得本机IP 
 	}
 	
+	public String getPort() {
+		return port;
+	}
+	
+	public void setPort(String port) {
+		this.port = port;
+	}
 	public String getIp() {
 		return ip;
 	}

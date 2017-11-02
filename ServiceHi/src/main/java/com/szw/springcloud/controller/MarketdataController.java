@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,14 +20,15 @@ import com.szw.springcloud.repository.RealTimeMarketdataRepository;
 @Controller
 public class MarketdataController {
 	
+	@Value("${server.port}")
+	private String port ;
+	
 	@Autowired
 	private RealTimeMarketdataRepository realTimeMarketdataRepository ;
 	
 	@RequestMapping("/api/public/retrieveMarketdata")
 	@ResponseBody
 	public Response retrieveMarketdata(String key) throws InterruptedException {
-		
-		System.out.println("===============================================" + key + "===========================================");
 		
 		Response response = new Response() ;
 		
@@ -44,6 +46,7 @@ public class MarketdataController {
 		response.setCode("("+key+")SUCCESS") ;
 		response.setDesc("数据量：" + priceList.size());
 		response.setData(priceList);
+		response.setPort(port) ;
 		
 		return response ;
 	}
